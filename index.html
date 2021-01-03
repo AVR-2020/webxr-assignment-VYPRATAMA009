@@ -10,6 +10,7 @@
 	<script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+	<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
 
     <script>
 		AFRAME.registerComponent('play-pause', {
@@ -32,10 +33,9 @@
 	
 <body>
 
-    <a-scene stats renderer="colorManagement: true" physics="debug: true ">
+    <a-scene stats renderer="colorManagement: true" physics="debug: true "  inspector-plugin-recast>
 
         <!-- Asset Management System -->
-        <!-- DOWNLOAD, PRELOAD YOUR VIDEO, AND UPDATE ITS ID AND FILE NAME -->
         <a-assets>
         	<img id="play" src="asset/video/play.png">
         	<img id="pause" src="asset/video/pause.png">
@@ -43,35 +43,53 @@
 			<img id="dinding" src="asset/concrete.jpg">
 			<a-asset-item id="nippontank" src="asset/model/type_97_chi-ha_handpainted/tankt97.gltf"></a-asset-item>
 			<a-asset-item id="panzer" src="asset/model/panzer/panzer.gltf"></a-asset-item>
+			<a-asset-item id="meshku" src="asset/navmesh.gltf"></a-asset-item>
 
 			<img id="ground" src="asset/floor-1024.jpg">
 		</a-assets>
 		
+		<a-entity movement-controls="speed: 0.15; constrainToNavMesh: true" position="0 0 2">
+			<!-- Camera -->
+			<a-entity camera position="0 1.6 0"
+					  look-controls="pointerLockEnabled: true">
+				<a-cursor></a-cursor>
+			</a-entity>
+		</a-entity>
+
+
         <!-- Ground -->
-		<a-plane src="#ground" scale="40 40 1" repeat="2 2" rotation="-90 0 0" material="" geometry="" position="0 0.036 0">
+		<a-plane src="#ground" scale="62.24218 62.24218 1.55607" repeat="2 2" rotation="-90 0 0" material="" geometry="" position="1.13717 0.036 0">
 		</a-plane>
 		
 		<!-- Camera -->
-		<a-camera camera="" position="0 1.6 1.342" rotation="-6.531718864491385 -68.06738606154181 0" look-controls="" wasd-controls="" data-aframe-inspector-original-camera="">
+<!-- 		<a-camera camera="" position="-2.23764 1.6 30.10664" rotation="-4.354479242994248 -26.470650135043996 0" look-controls="" wasd-controls="" data-aframe-inspector-original-camera="">
 			<a-cursor material="" raycaster="" cursor="" geometry=""></a-cursor>
-		</a-camera>
-		
+		</a-camera> -->
+
+		<a-entity gltf-model="#meshku" nav-mesh position="0 -0.1 0" visible="true">
+		</a-entity>
+
 		<!--Tank -->
 		<a-entity gltf-model="#nippontank" scale="0.01 0.01 0.01"   rotation="0 134.9836999126658 0" position="6.26417 0.96485 -2.84082"></a-entity>
-		<a-entity gltf-model="#panzer" scale="0.6 0.6 0.6" rotation="0 -132.0215081118394 0" position="-3.529 0 -3.28119" ></a-entity>
-
+		<a-entity gltf-model="#panzer" scale="0.75736 0.75736 0.75736" rotation="0 -132.0215081118394 0" position="-3.529 0 -3.28119" ></a-entity>
 
 		<!--museum -->
-		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="2.26488 3.61674 -10.28487" material="" geometry="" scale="8.054 4.52334 0.26307" rotation="0.02 0 0"></a-box>
-		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="-9.86632 3.67742 -1.42206" material="" geometry="" scale="25.44616 7.34952 0.91391" rotation="0.020053522829578813 91.95456949834097 0" id="box1"></a-box>
-		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="10.39805 3.67742 -1.42206" material="" geometry="" scale="25.44616 7.34952 0.91391" rotation="0.020053522829578813 91.95456949834097 0" id="box2"></a-box>
+		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="2.26488 3.61674 -10.28487" material="" geometry="" scale="8.054 4.52334 0.26307" rotation="0.02 0 0"></a-box>	
+		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="-10.19374 3.67742 3.46707" material="" geometry="" scale="34.77429 7.34952 0.91391" rotation="0 90 0" id="box1"></a-box>
+		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="10.39805 3.67742 4.08053" material="" geometry="" scale="36.3973 7.34952 0.91391" rotation="0 90 0" id="box2"></a-box>
 		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="-0.08453 3.67742 -13.68855" material="" geometry="" scale="21.01954 7.34952 0.91391" rotation="0 180 0" id="box3"></a-box>
+		<a-box color="#FFFFFF" src="asset/concrete.jpg" repeat="1 1" normal-map="#dinding" normal-texture-repeat="1 1" normal-scale="1 -1" roughness="0.5" position="0.71166 0.13225 10.40644" material="" geometry="" scale="16.8079 1.00596 1.97723" rotation="0 90 0" id="boxmiddle"></a-box>
+
 		<!-- Video -->
 		<a-video src="#ww2" width="8" height="4.5" position="2.29605 3.63332 -10.13276" material="" geometry="">
 			<!-- Play/Pause -->
 			<a-image id="videoControls" src="#play" position="0 -2.68334 0" scale="0.5 0.5 1" play-pause="" material="" geometry="">
 			</a-image>
 		</a-video>
+
+
+		<a-entity light="intensity: 0.6; castShadow: true" position="0.65618 1 7.21142" data-aframe-default-light="" aframe-injected=""></a-entity>
+
 
     </a-scene>
 </body>
