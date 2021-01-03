@@ -11,6 +11,7 @@
 	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
 	<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+	<script src="https://cdn.rawgit.com/elbobo/aframe-multisrc-component/b6d23310/dist/0.3/aframe-multisrc-component.js"></script>
 	<script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
 <!-- 	<script src="js/progressive-controls.js"></script>
  -->
@@ -42,9 +43,15 @@
         <!-- Asset Management System -->
         <a-assets>
         	<img id="play" src="asset/video/play.png">
-        	<img id="pause" src="asset/video/pause.png">
+			<img id="pause" src="asset/video/pause.png">
+			<img id="exit" src="asset/xcross.png">
+			<img id="teskiri" src="asset/xcross.png">
 			<video id="ww2" src="asset/video/video3.mp4" loop="true"></video>
 			<img id="dinding" src="asset/concrete.jpg">
+			<img id="gtiger" src="asset/tiger.jpg">
+			<img id="gbhago" src="asset/ha-go3bp.jpg">
+
+
 			<a-asset-item id="nippontank" src="asset/model/type_97_chi-ha_handpainted/tankt97.gltf"></a-asset-item>
 			<a-asset-item id="panzer" src="asset/model/panzer/panzer.gltf"></a-asset-item>
 			<a-asset-item id="meshku" src="asset/navmesh.gltf"></a-asset-item>
@@ -133,9 +140,9 @@
 		  					animation.dur: 1000">
 		  </a-box>
   
-		  <a-box id="blue" color="#00AAFF" position="0.78543 2.32591 4.7333" opacity="1" material="" geometry=""></a-box>
+		  <a-box src="asset/ha-go3bp.jpg" repeat="1 1" color="#00AAFF" position="0.78543 2.32591 4.7333" opacity="1" material="" geometry="" id="blue" ></a-box>
 		  
-		  <a-plane id="grey" color="#333333" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
+		  <a-plane id="grey" src="#exit" color="#333333" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
 		  animation__enter="property: material.color; from: #333333; to: #FF0000; startEvents: mouseenter; dur: 250; easing: linear" 
 		  animation__leave="property: material.color; from: #FF0000; to: #333333; startEvents: mouseleave; dur: 250; easing: linear" 
 		  event-set__position="_event: click;
@@ -163,13 +170,13 @@
 								animation.dur: 1000">
 			</a-box>
 	
-			<a-box id="blue2" color="#00AAFF" position="0.78543 2.32591 4.7333" opacity="1" material="" geometry=""></a-box>
+			<a-box id="blue2" src="asset/tiger2bp.jpg"  color="#00AAFF" position="0.78543 2.32591 4.7333" opacity="1" material="" geometry=""></a-box>
 			
-			<a-plane id="grey2" color="#333333" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
+			<a-plane id="grey2" src="#exit" color="#FFAA00" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
 			animation__enter="property: material.color; from: #333333; to: #FF0000; startEvents: mouseenter; dur: 250; easing: linear" 
 			animation__leave="property: material.color; from: #FF0000; to: #333333; startEvents: mouseleave; dur: 250; easing: linear" 
 			event-set__position="_event: click;
-									animation.to: 0.78543 2.32591 4.7333;
+								animation.to: 0.78543 2.32591 4.7333;
 								  animation.dur: 250"
 			event-set__scale="_target: #blue2; _event: click;
 								animation.to: 1 1 1;
@@ -195,7 +202,7 @@
 	
 			<a-box id="blue3" color="#00AAFF" position="0.78543 2.32591 4.7333" opacity="1" material="" geometry=""></a-box>
 			
-			<a-plane id="grey3" src="#play" color="" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
+			<a-plane id="grey3" src="#exit" color="" position="0.80144 2.07799 4.64735" rotation="0 -90 0" scale="0.5 0.5 1" class="ui" 
 			animation__enter="property: material.color; from: #333333; to: #FF0000; startEvents: mouseenter; dur: 250; easing: linear" 
 			animation__leave="property: material.color; from: #FF0000; to: #333333; startEvents: mouseleave; dur: 250; easing: linear" 
 			event-set__position="_event: click;
